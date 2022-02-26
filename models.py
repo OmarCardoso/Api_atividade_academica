@@ -35,11 +35,13 @@ class Pessoas(Base):
 
 # Criar tabela Atividades relacionada com Pessoas
 class Atividades(Base):
-    __tablename__='atividades'
+    __tablename__= 'atividades'
     id = Column(Integer,primary_key=True)
     nome = Column(String(80))
     pessoa_id = Column(Integer, ForeignKey('pessoas.id'))
     pessoa = relationship("Pessoas")
+
+
   # Representar o objeto (repr -> representacao)
     def __repr__(self):
         return '<Atividades {}>'.format(self.nome)
@@ -55,7 +57,23 @@ class Atividades(Base):
         db_session.delete(self)
         db_session.commit()
 
+# Criação de tabela de usuarios
+class Usuarios(Base):
+    __tablename__='usuarios'
+    id = Column(Integer, primary_key=True)
+    login = Column(String(20), unique=True)
+    senha = Column(String(20))
 
+    def __repr__(self):
+        return'<usuario {}>'.format(self.login)
+
+    def save(self):
+        db_session.add(self)
+        db_session.commit()
+
+    def delete(self):
+        db_session.delete(self)
+        db_session.commit()
 
 # Criar metodo init db para criar o banco de dados
 def init_db():
