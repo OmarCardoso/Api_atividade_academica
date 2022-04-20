@@ -1,4 +1,3 @@
 # api_atividade_academica
-Este método irá retornar um totalizados das atividades válidas do aluno segundo as regras configuradas no sistema acadêmico.
-POST
-JSON/XML
+Retorna atividades válidas de I/O segundo as regras configuradas no sistema acadêmico.
+Uso de Flask (Rest api), bootstrap, CC3, HTML e banco de dados PostgreSQ
